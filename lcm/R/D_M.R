@@ -18,7 +18,8 @@ D_Mt <- function(P_a, t, tau, M) {
                 P_a[[g("lcm_Q_M{s}")]]
 
             w <- `K*_t,s`
-            w <- pmin(w, quantile(w, 0.99))
+            w <- try(pmin(w, quantile(w, 0.99)), silent = TRUE)
+            if (inherits(w, "try-error")) browser()
             w * y_1 * y_2
         })
     )

@@ -20,23 +20,37 @@ CrossFit_D_Lt <- function(Task, t, a_prime, a_star, Folds) {
             ifelse(t == Task$Npsem$tau, Task$type, "gaussian")#, lrnrs
         )
 
-        g_t <- CrossFit(                                                                      # line 10 __
-            Folds$Tr(Task$data, v), P_a,
-            Task$Npsem$A[t], Task$Npsem$history("A", t), "binomial"#, lrnrs
-        )
-
-        g_t <- P_a[[Task$Npsem$A[t]]] * g_t + (1 - P_a[[Task$Npsem$A[t]]]) * (1 - g_t)
+        if (t > 1) {
+            g_t <- CrossFit(Folds$Tr(Task$data, v), P_a, Task$Npsem$A[t],
+                            Task$Npsem$history("A", t), "binomial")
+            g_t <- P_a[[Task$Npsem$A[t]]] * g_t + (1 - P_a[[Task$Npsem$A[t]]]) *
+                (1 - g_t)
+        }
+        if (t == 1) {
+            g_t <- glm(reformulate(Task$Npsem$history("A", t),
+                                   response = Task$Npsem$A[t]), family = "binomial",
+                       data = Folds$Tr(Task$data, v))
+            g_t <- predict(g_t, P_a, type = "response")
+            g_t <- P_a[[Task$Npsem$A[t]]] * g_t + (1 - P_a[[Task$Npsem$A[t]]]) *
+                (1 - g_t)
+        }
 
         # Create pooled data for g_Mt fit
         m_fit_data <- Task$augment(Folds$Tr(Task$data, v), t)
         m_fit_data[["lcm_pseudo_m_fit"]] <-
             as.numeric(m_fit_data[[g("lcm_med_{t}")]] == m_fit_data[[Task$Npsem$M[t]]])
 
-        g_Mt <- CrossFit(                                                                     # line 11 __
-            m_fit_data, P_a, "lcm_pseudo_m_fit",
-            c(Task$Npsem$history("M", t), g("lcm_med_{t}")),
-            "binomial"#, lrnrs
-        )
+        if (t > 1) {
+            g_Mt <- CrossFit(m_fit_data, P_a, "lcm_pseudo_m_fit",
+                             c(Task$Npsem$history("M", t), g("lcm_med_{t}")),
+                             "binomial")
+        }
+        if (t == 1) {
+            g_Mt <- glm(reformulate(c(Task$Npsem$history("M",
+                                                         t), g("lcm_med_{t}")), response = "lcm_pseudo_m_fit"),
+                        family = "binomial", data = m_fit_data)
+            g_Mt <- predict(g_Mt, P_a, type = "response")
+        }
 
         P_a[[g("lcm_Gp_A{t}")]] <- G(P_a[[Task$Npsem$A[t]]], g_t, a_prime)                    # line 12 __
         P_a[[g("lcm_Gs_A{t}")]] <- G(P_a[[Task$Npsem$A[t]]], g_t, a_star)                     # line 13 __
