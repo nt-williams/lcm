@@ -1,4 +1,4 @@
-CrossFit_D_Lt <- function(Task, t, a_prime, a_star, Folds) {
+CrossFit_D_Lt <- function(Task, t, a_prime, a_star, Folds, lrnrs) {
     if (t == Task$Npsem$tau) {
         Task$augmented[[g("lcm_D_Z{t+1}")]] <- Task$augmented[[Task$Npsem$Y]]
         Task$augmented[[g("lcm_Q_Z{t+1}")]] <- Task$augmented[[Task$Npsem$Y]]
@@ -17,7 +17,7 @@ CrossFit_D_Lt <- function(Task, t, a_prime, a_star, Folds) {
             Tr_a[Tr_a[[g("lcm_med_{t}")]] == Tr_a[[Task$Npsem$M[t]]], ],                    # subset operation
             P_a, g("lcm_D_Z{t+1}"),
             `(mU_t+1,H_M,t)`,
-            ifelse(t == Task$Npsem$tau, Task$type, "gaussian")#, lrnrs
+            ifelse(t == Task$Npsem$tau, Task$type, "gaussian"), lrnrs
         )
 
         if (t > 1) {
