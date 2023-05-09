@@ -16,7 +16,7 @@ read_zip <- function(tar) {
 
 res <- map_dfr(c(`500` = 500, `1000` = 1000, `5000` = 5000),
                function(n) {
-                   bind_rows(read_zip(glue::glue("_research/data/{framework}_{n}_dgp4_bad.zip")))
+                   bind_rows(read_zip(glue::glue("_research/data/{framework}_{n}_dgp5_bad.zip")))
                }, .id = "n")
 
 truth <- true()

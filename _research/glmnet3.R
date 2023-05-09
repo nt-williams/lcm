@@ -26,7 +26,8 @@ glmnet3 <- function(X, y, family = c("gaussian", "binomial"), id = NULL) {
         x <- as.matrix(X)
         ans$fit <- glm(y ~ ., data = cbind(y = y, X), family = match.arg(family))
     } else {
-        f <- as.formula(paste0("~ .^", ncol(X)))
+        # f <- as.formula(paste0("~ .^", ncol(X)))
+        f <- as.formula(paste0("~ .^", 2))
         x <- model.matrix(f, X)[, -1]
         ans$fit <- glmnet::cv.glmnet(x, y, family = match.arg(family), foldid = foldid)
     }
@@ -44,7 +45,8 @@ predict.glmnet3 <- function(object, newx) {
     }
 
     X <- newx[, object$covars, drop = TRUE]
-    f <- as.formula(paste0("~ .^", ncol(X)))
+    # f <- as.formula(paste0("~ .^", ncol(X)))
+    f <- as.formula(paste0("~ .^", 2))
     X <- model.matrix(f, X)[, -1]
     as.vector(predict(object$fit, X, type = "response")[, 1])
 }

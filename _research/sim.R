@@ -52,7 +52,7 @@ simulate <- function(n, seed, V) {
             total = res_11$theta - res_00$theta,
             var_total = var(res_11$S - res_00$S) / n
         ),
-        glue("_research/data/{id}-{n}-dgp4.csv"),
+        glue("_research/data/{id}-{n}-dgp5.csv"),
         row.names = FALSE
     )
 }
