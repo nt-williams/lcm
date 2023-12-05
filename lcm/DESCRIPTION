@@ -24,15 +24,15 @@ Imports:
     glue,
     origami,
     R6,
-    sl3 (>= 1.4.4),
     slider
 URL: https://github.com/nt-williams/lcm
 BugReports: https://github.com/nt-williams/lcm/issues
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Depends: 
-    R (>= 2.10)
-Remotes:  
-    tlverse/sl3
+    R (>= 2.10), 
+    mlr3superlearner
+Remotes: 
+    nt-williams/mlr3superlearner

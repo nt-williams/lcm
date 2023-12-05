@@ -4,7 +4,7 @@
 \alias{lcm}
 \title{Causal Mediation with Longitudinal Mediators, Treatments, and Confounders}
 \usage{
-lcm(data, a_prime, a_star, Npsem, lrnrs, V)
+lcm(data, a_prime, a_star, Npsem, lrnrs = "glm", V)
 }
 \arguments{
 \item{data}{A data frame}
@@ -15,7 +15,7 @@ lcm(data, a_prime, a_star, Npsem, lrnrs, V)
 
 \item{Npsem}{An `lcm_Npsem` object mapping observed variables to the assumed NPSEM}
 
-\item{lrnrs}{An object inhering from `Lrnr_base` from the sl3 package}
+\item{lrnrs}{`mlr3superlearner` learners.}
 
 \item{V}{The number of folds for cross-fitting}
 }
@@ -34,5 +34,5 @@ Np <- lcm_Npsem$new(
     Y = "Y"
 )
 
-lcm(sim, c(0, 0), c(0, 0), Np, sl3::Lrnr_glm_fast$new(), 5)
+lcm(sim, c(0, 0), c(0, 0), Np, V = 5)
 }

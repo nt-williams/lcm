@@ -15,7 +15,7 @@ Regress(Tr, y, x, type, lrnrs)
 
 \item{type}{outcome type}
 
-\item{lrnrs}{sl3 learners}
+\item{lrnrs}{sl3 learner}
 }
 \description{
 Train an sl3 object

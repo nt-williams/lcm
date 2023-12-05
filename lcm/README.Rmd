@@ -26,9 +26,11 @@ knitr::opts_chunk$set(
 <!-- # coverage is nominal at 0.95 -->
 
 ```{r}
+library(lcm)
+
 data("sim", package = "lcm")
 
-Np <- lcm::lcm_Npsem$new(
+Np <- lcm_Npsem$new(
     L = list(c("L_1"), c("L_2")),
     A = c("A_1", "A_2"),
     Z = list(c("Z_1"), c("Z_2")),
@@ -36,5 +38,5 @@ Np <- lcm::lcm_Npsem$new(
     Y = "Y"
 )
 
-lcm::lcm(sim, 0, 0, Np, sl3::Lrnr_glm_fast$new(), 5)
+lcm(sim, c(0, 0), c(0, 0), Np, c("glm", "xgboost"), 1)
 ```

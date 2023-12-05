@@ -11,15 +11,15 @@ R6 class for an lcm_Npsem
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{lcm_Npsem$new()}}
-\item \href{#method-history}{\code{lcm_Npsem$history()}}
-\item \href{#method-all_vars}{\code{lcm_Npsem$all_vars()}}
-\item \href{#method-clone}{\code{lcm_Npsem$clone()}}
+\item \href{#method-lcm_Npsem-new}{\code{lcm_Npsem$new()}}
+\item \href{#method-lcm_Npsem-history}{\code{lcm_Npsem$history()}}
+\item \href{#method-lcm_Npsem-all_vars}{\code{lcm_Npsem$all_vars()}}
+\item \href{#method-lcm_Npsem-clone}{\code{lcm_Npsem$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-lcm_Npsem-new"></a>}}
+\if{latex}{\out{\hypertarget{method-lcm_Npsem-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{lcm_Npsem$new(W, L, A, Z, M, Y)}\if{html}{\out{</div>}}
@@ -27,8 +27,8 @@ R6 class for an lcm_Npsem
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-history"></a>}}
-\if{latex}{\out{\hypertarget{method-history}{}}}
+\if{html}{\out{<a id="method-lcm_Npsem-history"></a>}}
+\if{latex}{\out{\hypertarget{method-lcm_Npsem-history}{}}}
 \subsection{Method \code{history()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{lcm_Npsem$history(var = c("L", "A", "Z", "M", "Y"), t)}\if{html}{\out{</div>}}
@@ -36,8 +36,8 @@ R6 class for an lcm_Npsem
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-all_vars"></a>}}
-\if{latex}{\out{\hypertarget{method-all_vars}{}}}
+\if{html}{\out{<a id="method-lcm_Npsem-all_vars"></a>}}
+\if{latex}{\out{\hypertarget{method-lcm_Npsem-all_vars}{}}}
 \subsection{Method \code{all_vars()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{lcm_Npsem$all_vars()}\if{html}{\out{</div>}}
@@ -45,8 +45,8 @@ R6 class for an lcm_Npsem
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-lcm_Npsem-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-lcm_Npsem-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
